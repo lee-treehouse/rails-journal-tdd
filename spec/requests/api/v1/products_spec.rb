@@ -1,6 +1,8 @@
+# execute like this bundle exec rspec spec/requests/api/v1/products_spec.rb
+
 require "rails_helper"
 
-Rspec.describe "Products endpoints", request: true do 
+RSpec.describe "Products endpoints", request: true do 
     describe "POST /api/v1/products" do
         context "when all parameters are provided" do 
             it "creates a product" do 
