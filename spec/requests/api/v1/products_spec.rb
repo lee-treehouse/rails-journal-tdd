@@ -36,5 +36,21 @@ RSpec.describe "Products endpoints", request: true do
         expect(product.price).to eq(5000)
       end
     end
+
+    context "when price is negative" do
+      it "does not persist the product" do
+        params = {
+          product: {
+            name: "Fancy sneakers",
+            description: "Lorem ipsum dolor sit",
+            price: -5000
+          }
+        }
+
+        expect do
+          post api_v1_products_url, params: params
+        end.not_to change(Product, :count)
+      end
+    end
   end
 end
