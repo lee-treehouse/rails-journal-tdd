@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_04_041653) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_04_042836) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "coupon_rules", force: :cascade do |t|
+    t.string "kind"
+    t.decimal "discount"
+    t.integer "coupon_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "coupons", force: :cascade do |t|
     t.string "description"
@@ -22,6 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_04_041653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
 
   create_table "products", force: :cascade do |t|
     t.string "name"
